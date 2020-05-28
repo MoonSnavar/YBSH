@@ -14,15 +14,16 @@ public class FreeWalking : MonoBehaviour
     [Header("Ссылка на аниматор")]
     private Animator animator;
     private bool isStop;
-
+    private Vector3 startPosition;
     // Start is called before the first frame update
     private void Start()
     {
+        startPosition = transform.position; //запоминаем место спавна
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        isStop = false;
-        Invoke("Walking", 2f);
-        InvokeRepeating("Stop", 4f, 4f);
+        isStop = false;       
+        Invoke("Walking", 1.5f);
+        InvokeRepeating("Stop", 3f, 3f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,13 +40,30 @@ public class FreeWalking : MonoBehaviour
     }
     private void Walking()
     {
+        float rangeFromSpawn = 2.2f;
+        float DifferencePositionsY = transform.position.y - startPosition.y;
         if (!isStop)
-            ChangeDirection(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            if (DifferencePositionsY < rangeFromSpawn && DifferencePositionsY > -rangeFromSpawn)
+            {
+                ChangeDirection(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            }
+            else
+            {
+                float y;
+                if (DifferencePositionsY > 0)
+                    y = -1;
+                else
+                    y = 1;
+                ChangeDirection(Random.Range(-1f, 1f), y);
+            }
         else
+        {
             ChangeDirection(0, 0);
+            isStop = false;
+        }
+
         Move();
-        CheckFlip();
-        isStop = false;
+        CheckFlip();        
         Animations();
     }
 
