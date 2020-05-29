@@ -20,16 +20,24 @@ public class HorizontalWalking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();        
+    }
+    private void OnEnable()
+    {
         if (transform.localScale.x > 0)
             flag = true;
         else
             flag = false;
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("SpawnVirusMark", 1f, 0.7f);
     }
-
-    // Update is called once per frame
+    private void OnDisable()
+    {
+        CancelInvoke("SpawnVirusMark");
+        CancelInvoke("WalkRight");
+        CancelInvoke("WalkLeft");
+    }
+    
     void Update()
     {
         if (transform.localPosition.x >= -3 && transform.localPosition.x <= -2.5f)
@@ -55,7 +63,7 @@ public class HorizontalWalking : MonoBehaviour
                 InvokeRepeating("WalkLeft", 2f, 0.1f);
                 flag = true;
             }
-        }               
+        }
     }
 
     private void SpawnVirusMark()

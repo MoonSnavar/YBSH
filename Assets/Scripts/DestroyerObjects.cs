@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestroyerObjects : MonoBehaviour
 {
@@ -14,10 +12,6 @@ public class DestroyerObjects : MonoBehaviour
     void DestroyThisAnimation()
     {
         animator.SetTrigger("Destroy");
-        Invoke("DestroyThis", 2f);        
-    }
-    void DestroyThis()
-    {
-        Destroy(gameObject);
+        Destroy(gameObject,2f);      
     }
 }
