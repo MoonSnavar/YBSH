@@ -132,8 +132,7 @@ MonoBehaviour:
   isAIEnemy: 0
   isHorWalkingEnemy: 0
   isStandingEnemy: 0
-  isHeal: 1
-  isCurrencyPoints: 0
+  isBonus: 1
 --- !u!61 &390603018490409685
 BoxCollider2D:
   m_ObjectHideFlags: 0

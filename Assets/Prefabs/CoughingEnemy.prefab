@@ -217,8 +217,7 @@ MonoBehaviour:
   isAIEnemy: 0
   isHorWalkingEnemy: 0
   isStandingEnemy: 0
-  isHeal: 0
-  isCurrencyPoints: 0
+  isBonus: 0
 --- !u!95 &6163114569765945833
 Animator:
   serializedVersion: 3
@@ -377,9 +376,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 898cf60fb8a26f94e90c18f179bffcd9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 14ef618691ded884f90f5779784b4228, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

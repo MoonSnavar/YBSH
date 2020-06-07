@@ -213,9 +213,9 @@ public class MenuManager : MonoBehaviour
     public void ClearPoint()
     {
         PlayerPrefs.SetInt("Progress", 11);
-        //PlayClick();
-        //PlayerPrefs.DeleteAll();
-        //currentCountCurrencyPoints.text = PlayerPrefs.GetInt("CurrencyPoints").ToString();
+        PlayerPrefs.SetInt("LevelProgress", 20);
+        PlayerPrefs.DeleteAll();
+        currentCountCurrencyPoints.text = PlayerPrefs.GetInt("CurrencyPoints").ToString();
     }
 
     public void TurnSecondMenu(bool open)

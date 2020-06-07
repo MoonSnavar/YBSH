@@ -45,6 +45,10 @@ public class PlayerManager : MonoBehaviour
 
                 if (temp <= PlayerPrefs.GetInt("Length")) //чтоб пустые блоки не создавал
                     PlayerPrefs.SetInt("Progress", temp + 1);
+
+                temp = PlayerPrefs.GetInt("LevelProgress");
+                PlayerPrefs.SetInt("LevelProgress", temp + 1);
+
                 Saveinfection();
                 int currentCountCurrencyPoints = PlayerPrefs.GetInt("CurrencyPoints");
                 PlayerPrefs.SetInt("CurrencyPoints", currentCountCurrencyPoints + GetComponent<ResourcesControl>().countCurrencyPoints);

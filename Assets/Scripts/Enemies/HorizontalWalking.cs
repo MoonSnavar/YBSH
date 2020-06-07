@@ -29,13 +29,14 @@ public class HorizontalWalking : MonoBehaviour
             flag = true;
         else
             flag = false;
-        InvokeRepeating("SpawnVirusMark", 1f, 0.7f);
+        InvokeRepeating("SpawnVirusMark", 1f, 1f);        
     }
     private void OnDisable()
     {
         CancelInvoke("SpawnVirusMark");
         CancelInvoke("WalkRight");
         CancelInvoke("WalkLeft");
+        
     }
     
     void Update()
@@ -47,7 +48,7 @@ public class HorizontalWalking : MonoBehaviour
                 CancelInvoke("SpawnVirusMark");
                 CancelInvoke("WalkLeft");
                 animator.SetInteger("Walk", 3);
-                InvokeRepeating("SpawnVirusMark", 2f, 0.7f);
+                InvokeRepeating("SpawnVirusMark", 2f, 1f);
                 InvokeRepeating("WalkRight", 2f, 0.1f);
                 flag = false;
             }
@@ -59,7 +60,7 @@ public class HorizontalWalking : MonoBehaviour
                 CancelInvoke("SpawnVirusMark");
                 CancelInvoke("WalkRight");
                 animator.SetInteger("Walk", 3);
-                InvokeRepeating("SpawnVirusMark", 2f, 0.7f);
+                InvokeRepeating("SpawnVirusMark", 2f, 1f);
                 InvokeRepeating("WalkLeft", 2f, 0.1f);
                 flag = true;
             }

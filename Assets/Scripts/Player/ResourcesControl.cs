@@ -32,6 +32,7 @@ public class ResourcesControl : MonoBehaviour
     private float damage;
     private bool canTakeDamage = false;
 
+   
     private void Start()
     {
         soundState = PlayerPrefs.GetInt("Sounds");
@@ -116,8 +117,9 @@ public class ResourcesControl : MonoBehaviour
                 InvokeRepeating("TakeDamage", 0f, 1f); //запускаем метод через 0 секунд и повторяем каждые 1 секунд
                 canTakeDamage = false;
             }
-        }        
+        }
     }
+
     void TakeDamageFromVirus()
     {
         PlaySound(getInfectionDamageSound);
