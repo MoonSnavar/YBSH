@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("Частицы пыли")]
+    public GameObject dust;
     [Header("Ссылка на очки валюты, запасы еды и заражение")]
     public Text currentCountCurrencyPoints;
     public Text currentHungryPointText;
@@ -228,16 +230,19 @@ public class MenuManager : MonoBehaviour
     {
         PlayClick();
         settingsMenu.SetActive(open);
+        dust.SetActive(!open);
     }
     public void TurnShopMenu(bool open)
     {
         PlayClick();
         shopMenu.SetActive(open);
+        dust.SetActive(!open);
     }
     public void TurnMessageMenu(bool open)
     {
         PlayClick();
         messageMenu.SetActive(open);
+        dust.SetActive(!open);
     }
     public void TurnTextMessageMenu(bool open)
     {
