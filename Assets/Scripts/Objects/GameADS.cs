@@ -17,7 +17,7 @@ public class GameADS : MonoBehaviour, IUnityAdsListener
         myButton.interactable = Advertisement.IsReady(myPlacementId);
         if (myButton) myButton.onClick.AddListener(ShowRewardedVideo);
         Advertisement.AddListener(this);
-        Advertisement.Initialize(gameId, true);
+        Advertisement.Initialize(gameId, false);
         if (!myButton.interactable)
             textTestConnection.text = "Загрузка...";
     }

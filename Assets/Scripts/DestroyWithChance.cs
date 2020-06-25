@@ -18,10 +18,10 @@ public class DestroyWithChance : MonoBehaviour
     public static float chanceOfStayingBonus = 0.8f;    
 
     public static float difficulty;
+
+    private float chanceOfStaying = 0.5f;
     private void Start()
     {
-        float chanceOfStaying = 0.5f;
-
         if (!isBonus)
         {
             if (isCoughtintEnemy)
@@ -39,11 +39,31 @@ public class DestroyWithChance : MonoBehaviour
         }
         else
         {
-            chanceOfStaying = chanceOfStayingBonus;
-            chanceOfStaying -= (chanceOfStaying * difficulty) - chanceOfStaying;
-            if (chanceOfStaying <= 0)
-                chanceOfStaying = 0.18f;
+            int progress = PlayerPrefs.GetInt("LevelProgress");
+
+            if (progress < 2)
+            {
+                //не спавнить бумагу и мыло
+                chanceOfStaying = 0;
+            }
+            else if (progress < 3)
+            {
+                //спавнить бумагу, но не спавнить мыло
+                if (gameObject.CompareTag("Heal"))
+                    chanceOfStaying = 0;
+                else
+                    CalculateChanceForBonus();
+            }
+            else
+                CalculateChanceForBonus();
         }        
         if (Random.value > chanceOfStaying) Destroy(gameObject);
+    }
+    private void CalculateChanceForBonus()
+    {
+        chanceOfStaying = chanceOfStayingBonus;
+        chanceOfStaying -= (chanceOfStaying * difficulty) - chanceOfStaying;
+        if (chanceOfStaying <= 0)
+            chanceOfStaying = 0.18f;
     }
 }
