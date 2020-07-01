@@ -16,7 +16,7 @@ public class CheckLosemenu : MonoBehaviour
         if (minutePassed >= 20)
         {
             GameManager.canCheckConnection = true;
-            textADS.text = "ВМожно вернуться в игру, \n посмотрев рекламу";            
+            textADS.text = "Можно вернуться в игру, \n посмотрев рекламу";            
         }
         else
         {
